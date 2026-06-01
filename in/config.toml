@@ -1,0 +1,27 @@
+[general]
+years = 5
+capital_kr = 200_000
+inflation_yearly_percentage = 3.0
+
+[general.stock_fund]
+appreciation.yearly_percentage = 7.0
+appreciation.stddev = 15.0
+tax_percentage = 37.84
+
+[buy]
+price_kr = 3_000_000
+loan_years = 25
+appreciation.yearly_percentage = 4.0
+appreciation.stddev = 8.0
+interest.yearly_percentage = 5.3
+interest.stddev = 1.0
+fellesavgifter_monthly_kr = 3000
+kommunale_avgifter_monthly_kr = 500
+internett_monthly_kr = 500
+power_monthly_kr = 800
+agent_cut_percentage = 1.5
+rentefradrag_percentage = 22
+
+[rent]
+rate.monthly_kr = 11790
+rate.yearly_increase_percentage = 3.5

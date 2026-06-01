@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "general",
+    "buy",
+    "rent"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "general": {
+      "type": "object",
+      "required": [
+        "years",
+        "capital_kr",
+        "inflation_yearly_percentage",
+        "stock_fund"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "years": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "capital_kr": {
+          "type": "number",
+          "minimum": 0
+        },
+        "inflation_yearly_percentage": {
+          "type": "number"
+        },
+        "stock_fund": {
+          "$ref": "#/$defs/investment"
+        }
+      }
+    },
+    "buy": {
+      "type": "object",
+      "required": [
+        "price_kr",
+        "loan_years",
+        "appreciation",
+        "interest",
+        "fellesavgifter_monthly_kr",
+        "kommunale_avgifter_monthly_kr",
+        "internett_monthly_kr",
+        "power_monthly_kr",
+        "agent_cut_percentage",
+        "rentefradrag_percentage"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "price_kr": {
+          "type": "number",
+          "minimum": 0
+        },
+        "loan_years": {
+          "type": "number",
+          "minimum": 0
+        },
+        "appreciation": {
+          "$ref": "#/$defs/percentageWithStddev"
+        },
+        "interest": {
+          "$ref": "#/$defs/percentageWithStddev"
+        },
+        "fellesavgifter_monthly_kr": {
+          "type": "number",
+          "minimum": 0
+        },
+        "kommunale_avgifter_monthly_kr": {
+          "type": "number",
+          "minimum": 0
+        },
+        "internett_monthly_kr": {
+          "type": "number",
+          "minimum": 0
+        },
+        "power_monthly_kr": {
+          "type": "number",
+          "minimum": 0
+        },
+        "agent_cut_percentage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "rentefradrag_percentage": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "rent": {
+      "type": "object",
+      "required": [
+        "rate"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "rate": {
+          "type": "object",
+          "required": [
+            "monthly_kr",
+            "yearly_increase_percentage"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "monthly_kr": {
+              "type": "number",
+              "minimum": 0
+            },
+            "yearly_increase_percentage": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "investment": {
+      "type": "object",
+      "required": [
+        "appreciation",
+        "tax_percentage"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "appreciation": {
+          "$ref": "#/$defs/percentageWithStddev"
+        },
+        "tax_percentage": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "percentageWithStddev": {
+      "type": "object",
+      "required": [
+        "yearly_percentage",
+        "stddev"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "yearly_percentage": {
+          "type": "number"
+        },
+        "stddev": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
